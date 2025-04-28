@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>두근두근 방과후 소식지</title>
+<style>
+  body { // 전체 배경과 글꼴 설정
+    font-family: 'Arial', sans-serif;
+    background-color: #fefefe;
+    margin: 0;
+    padding: 0;
+    color: #333;
+  }
+  .container { // 신문 전체 레이아웃 컨테이너
+    width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 3px solid #ffd700;
+    border-radius: 20px;
+    background: #fff8dc;
+  }
+  .header { // 제목 영역 스타일
+    text-align: center;
+    padding: 20px;
+    background: linear-gradient(135deg, #ffcc70, #ff8c8c);
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    animation: bounce 2s infinite;
+  }
+  .header h1 { // 신문 제목 스타일
+    margin: 0;
+    font-size: 3em;
+    color: #ffffff;
+    text-shadow: 2px 2px 4px #ff7f50;
+  }
+  @keyframes bounce { // 제목에 신나는 애니메이션 효과 추가
+    0%, 20%, 50%, 80%, 100% {
+      transform: translateY(0);
+    }
+    40% {
+      transform: translateY(-10px);
+    }
+    60% {
+      transform: translateY(-5px);
+    }
+  }
+  .section { // 각 섹션 구분 스타일
+    margin-top: 30px;
+  }
+  .section h2 { // 섹션 제목 스타일
+    font-size: 1.8em;
+    color: #4169e1;
+    border-bottom: 2px solid #4169e1;
+    padding-bottom: 5px;
+  }
+  .section p, .section ul { // 본문 내용 스타일
+    font-size: 1.1em;
+    line-height: 1.6em;
+  }
+  .highlight { // 강조 표시 스타일
+    background-color: #fffacd;
+    padding: 5px 10px;
+    border-radius: 10px;
+  }
+  .image-frame { // 이미지 프레임 스타일 (연필 무늬 배경)
+    border: 10px solid transparent;
+    padding: 10px;
+    margin: 20px 0;
+    text-align: center;
+    background-color: #ffffff;
+    background-image: url('https://photos.fife.usercontent.google.com/pw/AP1GczOWn_-DeXMTv1qGb50uhnweDIeL5kS3Nw9LStlMMOye8Xbu_R8SQvkZUw=w685-h913-s-no-gm?authuser=0');
+    background-repeat: repeat;
+    border-radius: 15px;
+  }
+  .image-frame img { // 프레임 안 이미지 스타일
+    max-width: 100%;
+    border-radius: 10px;
+  }
+  .gallery { // 갤러리 레이아웃 스타일
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-top: 20px;
+  }
+  .gallery img { // 갤러리 안 이미지 스타일
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    border: 2px solid #ffa07a;
+  }
+  .grade-image-frame { // 학년별 활동용 이미지 프레임
+    margin: 10px 0;
+    text-align: center;
+  }
+  .grade-image-frame img {
+    width: 80%;
+    border-radius: 10px;
+    border: 2px dashed #87cefa;
+    margin-top: 10px;
+  }
+  .footer { // 하단 연락처 정보 스타일
+    text-align: center;
+    margin-top: 40px;
+    font-size: 0.9em;
+    color: #888;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>🌟 두근두근 방과후 🌟</h1>
+    <p class="highlight">4월호 (창간호) | 우리 아이들의 특별한 이야기</p>
+  </div>
+
+  <div class="section">
+    <h2>이번 달 이야기</h2>
+    <p>아이들이 직접 참여한 요리교실, 만들기 수업, 야외 체험활동 소식을 전해드립니다!</p>
+    <div class="image-frame">
+      <img src="https://photos.fife.usercontent.google.com/pw/AP1GczOWn_-DeXMTv1qGb50uhnweDIeL5kS3Nw9LStlMMOye8Xbu_R8SQvkZUw=w685-h913-s-no-gm?authuser=0" alt="이번 달 활동 이미지"> // 활동 사진 삽입
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>학년별 주요 활동</h2>
+    <ul>
+      <li>1학년: 신나는 봄나들이 체험
+        <div class="grade-image-frame">
+          <img src="https://via.placeholder.com/400x250.png?text=1%ED%95%99%EB%85%84+%EB%B4%84%EB%82%98%EB%93%A4%EC%9D%B4" alt="1학년 봄나들이">
+        </div>
+      </li>
+      <li>2학년: 자연물 공예 활동
+        <div class="grade-image-frame">
+          <img src="https://via.placeholder.com/400x250.png?text=2%ED%95%99%EB%85%84+%EA%B3%B5%EC%98%88%ED%99%9C%EB%8F%99" alt="2학년 공예 활동">
+        </div>
+      </li>
+      <li>3학년: 과학탐구 실험교실
+        <div class="grade-image-frame">
+          <img src="https://via.placeholder.com/400x250.png?text=3%ED%95%99%EB%85%84+%EA%B3%BC%ED%95%99%ED%83%90%EA%B5%AC" alt="3학년 과학탐구">
+        </div>
+      </li>
+      <li>4학년: 역사문화탐방 프로젝트
+        <div class="grade-image-frame">
+          <img src="https://via.placeholder.com/400x250.png?text=4%ED%95%99%EB%85%84+%ED%83%90%EB%B0%A9" alt="4학년 역사탐방">
+        </div>
+      </li>
+      <li>5학년: 환경사랑 생태캠프
+        <div class="grade-image-frame">
+          <img src="https://via.placeholder.com/400x250.png?text=5%ED%95%99%EB%85%84+%EC%83%9D%ED%83%9C%EC%BA%A0%ED%94%84" alt="5학년 생태캠프">
+        </div>
+      </li>
+      <li>6학년: 리더십 캠프 & 졸업 준비 활동
+        <div class="grade-image-frame">
+          <img src="https://via.placeholder.com/400x250.png?text=6%ED%95%99%EB%85%84+%EB%A6%AC%EB%8D%94%EC%8B%AD" alt="6학년 리더십캠프">
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>우리 선생님을 소개합니다</h2>
+    <p>이번 달에는 친절하고 따뜻한 우리 미술 선생님과의 인터뷰를 담았습니다. 어떤 이야기를 들려주셨을까요?</p>
+  </div>
+
+  <div class="section">
+    <h2>아이들의 작품 전시</h2>
+    <ul>
+      <li>반짝반짝 모빌 만들기</li>
+      <li>상상 가득 나만의 마을 꾸미기</li>
+      <li>봄꽃 수채화 전시회</li>
+    </ul>
+    <div class="gallery">
+      <img src="https://via.placeholder.com/300x200.png?text=%EC%9E%91%ED%92%88+1" alt="작품1"> // 작품1
+      <img src="https://via.placeholder.com/300x200.png?text=%EC%9E%91%ED%92%88+2" alt="작품2"> // 작품2
+      <img src="https://via.placeholder.com/300x200.png?text=%EC%9E%91%ED%92%88+3" alt="작품3"> // 작품3
+      <img src="https://via.placeholder.com/300x200.png?text=%EC%9E%91%ED%92%88+4" alt="작품4"> // 작품4
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>다음 달 미리보기</h2>
+    <p>5월에는 어린이날 기념 특별활동과 가족초대 작품전이 예정되어 있어요. 기대해 주세요!</p>
+  </div>
+
+  <div class="section">
+    <h2>감사합니다</h2>
+    <p>아마 활동에 참여해 주신 분들:</p>
+    <ul>
+      <li>홍길동</li>
+      <li>김아름</li>
+      <li>이서준</li>
+      <li>박하늘</li>
+      <li>최지우</li>
+    </ul>
+    <p>마음 내어주신 모든 분들께 감사의 마음을 전합니다!</p>
+  </div>
+
+  <div class="footer">
+    두근두근 방과후 소식지 | 문의: 02-504-7643
+  </div>
+</div>
+</body>
+</html>
