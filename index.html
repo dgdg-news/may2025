@@ -4,14 +4,16 @@
 <meta charset="UTF-8">
 <title>두근두근 방과후 소식지</title>
 <style>
-  body { /* 전체 배경과 글꼴 설정 */
+  /* 전체 페이지 스타일 */
+  body {
     font-family: 'Arial', sans-serif;
     background-color: #fefefe;
     margin: 0;
     padding: 0;
     color: #333;
   }
-  .container { /* 신문 전체 레이아웃 컨테이너 */
+  /* 메인 컨테이너 */
+  .container {
     width: 800px;
     margin: 20px auto;
     padding: 20px;
@@ -19,7 +21,8 @@
     border-radius: 20px;
     background: #fff8dc;
   }
-  .header { /* 제목 영역 스타일 */
+  /* 상단 헤더 영역 */
+  .header {
     text-align: center;
     padding: 20px;
     background: linear-gradient(135deg, #ffcc70, #ff8c8c);
@@ -27,13 +30,14 @@
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     animation: bounce 2s infinite;
   }
-  .header h1 { /* 신문 제목 스타일 */
+  .header h1 {
     margin: 0;
     font-size: 3em;
     color: #ffffff;
     text-shadow: 2px 2px 4px #ff7f50;
   }
-  @keyframes bounce { /* 제목에 신나는 애니메이션 효과 추가 */
+  /* 헤더 애니메이션 효과 */
+  @keyframes bounce {
     0%, 20%, 50%, 80%, 100% {
       transform: translateY(0);
     }
@@ -44,51 +48,54 @@
       transform: translateY(-5px);
     }
   }
-  .section { /* 각 섹션 구분 스타일 */
+  /* 섹션 스타일 */
+  .section {
     margin-top: 30px;
   }
-  .section h2 { /* 섹션 제목 스타일 */
+  .section h2 {
     font-size: 1.8em;
     color: #4169e1;
     border-bottom: 2px solid #4169e1;
     padding-bottom: 5px;
   }
-  .section p, .section ul { /* 본문 내용 스타일 */
+  .section p, .section ul {
     font-size: 1.1em;
     line-height: 1.6em;
   }
-  .highlight { /* 강조 표시 스타일 */
+  /* 강조 표시 */
+  .highlight {
     background-color: #fffacd;
     padding: 5px 10px;
     border-radius: 10px;
   }
-  .image-frame { /* 이미지 프레임 스타일 (연필 무늬 배경) */
+  /* 이미지 프레임 스타일 */
+  .image-frame {
     border: 10px solid transparent;
     padding: 10px;
     margin: 20px 0;
     text-align: center;
     background-color: #ffffff;
-    background-image: url('https://photos.fife.usercontent.google.com/pw/AP1GczOWn_-DeXMTv1qGb50uhnweDIeL5kS3Nw9LStlMMOye8Xbu_R8SQvkZUw=w685-h913-s-no-gm?authuser=0');
-    background-repeat: repeat;
     border-radius: 15px;
   }
-  .image-frame img { /* 프레임 안 이미지 스타일 */
+  .image-frame img {
     max-width: 100%;
     border-radius: 10px;
   }
-  .gallery { /* 갤러리 레이아웃 스타일 */
+  /* 갤러리 레이아웃 */
+  .gallery {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
     margin-top: 20px;
   }
-  .gallery img { /* 갤러리 안 이미지 스타일 */
+  .gallery img {
     width: 100%;
     height: auto;
     border-radius: 10px;
     border: 2px solid #ffa07a;
   }
-  .grade-image-frame { /* 학년별 활동용 이미지 프레임 */
+  /* 학년별 이미지 프레임 */
+  .grade-image-frame {
     margin: 10px 0;
     text-align: center;
   }
@@ -98,7 +105,8 @@
     border: 2px dashed #87cefa;
     margin-top: 10px;
   }
-  .footer { /* 하단 연락처 정보 스타일 */
+  /* 하단 푸터 */
+  .footer {
     text-align: center;
     margin-top: 40px;
     font-size: 0.9em;
@@ -117,7 +125,7 @@
     <h2>이번 달 이야기</h2>
     <p>아마활동 생생후기를 전합니다.</p>
     <div class="image-frame">
-      <img src="아마활동_0425" alt="이번 달 활동 이미지"> /* 활동 사진 삽입 */
+      <img src="아마활동_0425" alt="이번 달 활동 이미지">
     </div>
   </div>
 
@@ -170,10 +178,10 @@
       <li>봄꽃 수채화 전시회</li>
     </ul>
     <div class="gallery">
-      <img src="https://via.placeholder.com/300x200.png?text=%EC%9E%91%ED%92%88+1" alt="작품1"> // 작품1
-      <img src="https://via.placeholder.com/300x200.png?text=%EC%9E%91%ED%92%88+2" alt="작품2"> // 작품2
-      <img src="https://via.placeholder.com/300x200.png?text=%EC%9E%91%ED%92%88+3" alt="작품3"> // 작품3
-      <img src="https://via.placeholder.com/300x200.png?text=%EC%9E%91%ED%92%88+4" alt="작품4"> // 작품4
+      <img src="https://via.placeholder.com/300x200.png?text=%EC%9E%91%ED%92%88+1" alt="작품1">
+      <img src="https://via.placeholder.com/300x200.png?text=%EC%9E%91%ED%92%88+2" alt="작품2">
+      <img src="https://via.placeholder.com/300x200.png?text=%EC%9E%91%ED%92%88+3" alt="작품3">
+      <img src="https://via.placeholder.com/300x200.png?text=%EC%9E%91%ED%92%88+4" alt="작품4">
     </div>
   </div>
 
@@ -186,11 +194,16 @@
     <h2>감사합니다</h2>
     <p>아마 활동에 참여해 주신 분들:</p>
     <ul>
-      <li>홍길동</li>
-      <li>김아름</li>
-      <li>이서준</li>
-      <li>박하늘</li>
-      <li>최지우</li>
+      <li>21기 오지음맘</li>
+      <li>21기 김수인맘</li>
+      <li>21기 한결맘</li>
+      <li>22기 강서연맘</li>
+      <li>22기 문시완빠</li>
+      <li>19기 이지오빠</li>
+      <li>19기 이선우맘</li>
+      <li>19기 이선우빠</li>
+      <li>20기 임연준맘</li>
+      <li>21기 김수인빠</li>
     </ul>
     <p>마음 내어주신 모든 분들께 감사의 마음을 전합니다!</p>
   </div>
