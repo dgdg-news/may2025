@@ -1,229 +1,192 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8">
-<title>두근두근 방과후 소식지</title>
-<style>
-  body {
-    font-family: 'Georgia', 'Times New Roman', serif;
-    background-color: #d8e8d8;
-    margin: 0;
-    padding: 40px 0;
-    color: #333;
-  }
-  .newspaper {
-    width: 900px;
-    margin: auto;
-    background: #fffef5;
-    padding: 40px;
-    border: 8px double #333;
-    box-shadow: 0 0 20px rgba(0,0,0,0.2);
-    position: relative;
-  }
-  .logo {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    width: 100px;
-    height: auto;
-  }
-  .header {
-    text-align: center;
-    margin-bottom: 40px;
-  }
-  .header h1 {
-    font-size: 3em;
-    margin: 0;
-    color: #222;
-  }
-  .header p {
-    font-size: 1.2em;
-    color: #777;
-  }
-  .section {
-    margin-bottom: 40px;
-  }
-  .section h2 {
-    font-size: 2em;
-    color: #333333;
-    background-color: #ffefd5;
-    padding: 12px;
-    border-radius: 12px;
-    margin-bottom: 20px;
-    text-align: center;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
-    font-weight: bold;
-}
-  .section p, .section ul {
-    font-size: 1.1em;
-    line-height: 1.8;
-  }
-  .image-frame, .grade-image-frame, .gallery {
-    margin-top: 20px;
-    text-align: center;
-  }
-  .image-frame img, .grade-image-frame img, .gallery img {
-    width: 45%;
-    margin: 10px;
-    border-radius: 8px;
-    border: 4px solid #ccc;
-    box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
-  }
-  .gallery {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
-  }
-  .footer {
-    text-align: center;
-    font-size: 0.9em;
-    color: #555;
-    margin-top: 60px;
-  }
-</style>
-<script>
-  function insertContent() {
-    const input = document.getElementById("newContent").value;
-    const target = document.getElementById("dynamic-story");
-    if (input.trim()) {
-      const newPara = document.createElement("p");
-      newPara.innerText = input;
-      target.appendChild(newPara);
-      saveContent();
-      document.getElementById("newContent").value = "";
+  <meta charset="UTF-8">
+  <title>두근두근 방과후 소식지</title>
+  <style>
+    body {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      background-color: #d8e8d8;
+      margin: 0;
+      padding: 40px 0;
+      color: #333;
     }
-  }
-
-  function saveContent() {
-    const content = document.getElementById("dynamic-story").innerHTML;
-    localStorage.setItem("savedStoryContent", content);
-  }
-
-  function loadContent() {
-    const saved = localStorage.getItem("savedStoryContent");
-    if (saved) {
-      document.getElementById("dynamic-story").innerHTML = saved;
+    .newspaper {
+      width: 900px;
+      margin: auto;
+      background: #fffef5;
+      padding: 40px;
+      border: 8px double #333;
+      box-shadow: 0 0 20px rgba(0,0,0,0.2);
+      position: relative;
     }
-  }
-
-  function clearContent() {
-    localStorage.removeItem("savedStoryContent");
-    document.getElementById("dynamic-story").innerHTML = "";
-  }
-
-  function editContent() {
-    const current = document.getElementById("dynamic-story").innerText;
-    document.getElementById("newContent").value = current;
-  }
-
-  window.onload = loadContent;
-</script>
+    .logo {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      width: 100px;
+      height: auto;
+    }
+    .header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .header h1 {
+      font-size: 3em;
+      margin: 0;
+      color: #222;
+    }
+    .header p {
+      font-size: 1.2em;
+      color: #777;
+    }
+    .section {
+      margin-bottom: 40px;
+    }
+    .section h2 {
+      font-size: 2em;
+      color: #333333;
+      background-color: #ffefd5;
+      padding: 12px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      text-align: center;
+      box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+      font-weight: bold;
+    }
+    .section p, .section ul {
+      font-size: 1.1em;
+      line-height: 1.8;
+    }
+    .image-frame, .grade-image-frame, .gallery {
+      margin-top: 20px;
+      text-align: center;
+    }
+    .image-frame img, .grade-image-frame img, .gallery img {
+      width: 45%;
+      margin: 10px;
+      border-radius: 8px;
+      border: 4px solid #ccc;
+      box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.9em;
+      color: #555;
+      margin-top: 60px;
+    }
+  </style>
+  <script>
+    window.onload = function () {
+      const saved = localStorage.getItem("savedNewsletterContent");
+      if (saved) {
+        const target = document.getElementById("dynamic-story");
+        if (target) {
+          target.innerHTML += `<p>${saved}</p>`;
+        }
+      }
+    };
+  </script>
 </head>
 <body>
-<!-- ✏️ 신문 외부에 배치된 입력 폼 -->
-<div id="editor" style="width: 900px; margin: 40px auto; padding: 20px; background: #f0f0f0; border-radius: 10px;">
-  <h3>📝 기사 내용 입력 (신문 편집 전용)</h3>
-  <textarea id="newContent" rows="6" style="width: 100%; font-size: 1em;"></textarea><br>
-  <button onclick="insertContent()">👉 신문에 추가</button>
-  <button onclick="editContent()" style="margin-left: 10px;">✏️ 수정</button>
-  <button onclick="clearContent()" style="margin-left: 10px;">🗑️ 초기화</button>
-  <button onclick="clearContent()" style="margin-left: 10px;">🗑️ 초기화</button>
-</div>
-<div class="newspaper">
-  <img src="두근두근로고(배경없음).png" alt="두근두근 로고" class="logo">
-  <div class="header">
-    <div style="display: flex; justify-content: center; align-items: center; gap: 20px;">
-      <h1>두근두근 방과후 소식지</h1>
+  <div class="newspaper">
+    <img src="두근두근로고(배경없음).png" alt="두근두근 로고" class="logo">
+    <div class="header">
+      <div style="display: flex; justify-content: center; align-items: center; gap: 20px;">
+        <h1>두근두근 방과후 소식지</h1>
+      </div>
+      <p>5월호 (창간호) | 우리 아이들의 특별한 이야기</p>
+      <div style="border: 1px solid #ccc; padding: 8px; margin-top: 10px; font-size: 0.9em; display: flex; justify-content: center; gap: 30px;">
+        <span>발행인 : 이사장 딱지</span>
+        <span>편집인 : 운영위원회</span>
+      </div>
     </div>
-    <p>5월호 (창간호) | 우리 아이들의 특별한 이야기</p>
-    <div style="border: 1px solid #ccc; padding: 8px; margin-top: 10px; font-size: 0.9em; display: flex; justify-content: center; gap: 30px;">
-      <span>발행인 : 이사장 딱지</span>
-      <span>편집인 : 운영위원회</span>
-    </div>
- 
-  <div class="section">
-    <h2>지난 달 이야기</h2>
-    <div id="dynamic-story"></div>
-    <h3 style="font-size: 1.5em; margin-top: 20px; color: #4169e1;">아마활동 후기</h3>
-    <p>아마활동 생생후기를 전합니다.</p>
-    <div class="image-frame">
-      <img src="아마활동_0425.jpg" alt="아마활동 이미지">
-    </div>
-    <h3 style="font-size: 1.5em; margin-top: 20px; color: #4169e1;">신입조합원 교육 소식</h3>
+
+    <div class="section">
+      <h2>지난 달 이야기</h2>
+      <div id="dynamic-story"></div>
+      <h3 style="font-size: 1.5em; margin-top: 20px; color: #4169e1;">아마활동 후기</h3>
+      <p>아마활동 생생후기를 전합니다.</p>
+      <div class="image-frame">
+        <img src="아마활동_0425.jpg" alt="아마활동 이미지">
+      </div>
+      <h3 style="font-size: 1.5em; margin-top: 20px; color: #4169e1;">신입조합원 교육 소식</h3>
       <p>지난 주 금요일(4월 25일) 신입조합원 교육이 잘 마무리되었습니다. 교육위에서 직접 요리까지 해서 즐겁고 화기애애한 시간을 가졌습니다. 작은눈 대표교사의 두근의 교육설명회 1시간, 그리고 조합원 교육 + 선배조합원들과의 소소한 나누기 등으로 알찬 시간을 가졌습니다. (교육위의 하사가 짜장 재료를 모두 지원해주셔서 비용이 많이 절감되었습니다 ^^) - 교육소위</p>
+      <div class="image-frame">
+        <img src="신입조합원교육_01_0425.jpg" alt="신입조합원 교육 이미지 1">
+        <img src="신입조합원교육_02_0425.jpg" alt="신입조합원 교육 이미지 2">
+        <img src="신입조합원교육_03_0425.jpg" alt="신입조합원 교육 이미지 3">
+        <img src="신입조합원교육_04_0425.jpg" alt="신입조합원 교육 이미지 4">
+      </div>
     </div>
-    <div class="image-frame">
-      <img src="아마활동_0425.jpg" alt="아마활동 이미지">
+
+    <div class="section">
+      <h2>학년별 주요 활동</h2>
+      <ul>
+        <li>1학년: 신나는 봄나들이 체험</li>
+        <li>2학년: 자연물 공예 활동</li>
+        <li>3학년: 과학탐구 실험교실</li>
+        <li>4학년: 역사문화탐방 프로젝트</li>
+        <li>5학년: 환경사랑 생태캠프</li>
+        <li>6학년: 리더십 캠프 & 졸업 준비 활동</li>
+      </ul>
+      <div class="grade-image-frame">
+        <img src="https://via.placeholder.com/800x400.png?text=학년별+활동사진" alt="학년별 활동">
+      </div>
     </div>
-    <div class="image-frame">
-      <img src="신입조합원교육_01_0425.jpg" alt="신입조합원 교육 이미지 1">
-      <img src="신입조합원교육_02_0425.jpg" alt="신입조합원 교육 이미지 2">
-      <img src="신입조합원교육_03_0425.jpg" alt="신입조합원 교육 이미지 3">
-      <img src="신입조합원교육_04_0425.jpg" alt="신입조합원 교육 이미지 4">
+
+    <div class="section">
+      <h2>우리 선생님을 소개합니다</h2>
+      <p>이번 달에는 친절하고 따뜻한 우리 미술 선생님과의 인터뷰를 담았습니다. 어떤 이야기를 들려주셨을까요?</p>
+    </div>
+
+    <div class="section">
+      <h2>아이들의 작품 전시</h2>
+      <ul>
+        <li>반짝반짝 모빌 만들기</li>
+        <li>상상 가득 나만의 마을 꾸미기</li>
+        <li>봄꽃 수채화 전시회</li>
+      </ul>
+      <div class="gallery">
+        <img src="https://via.placeholder.com/300x200.png?text=작품1" alt="작품1">
+        <img src="https://via.placeholder.com/300x200.png?text=작품2" alt="작품2">
+        <img src="https://via.placeholder.com/300x200.png?text=작품3" alt="작품3">
+        <img src="https://via.placeholder.com/300x200.png?text=작품4" alt="작품4">
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>다음 달 미리보기</h2>
+      <p>5월에는 어린이날 기념 특별활동과 가족초대 작품전이 예정되어 있어요. 기대해 주세요!</p>
+    </div>
+
+    <div class="section">
+      <h2>감사합니다</h2>
+      <p>아마 활동에 참여해 주신 분들:</p>
+      <ul>
+        <li>21기 오지음맘</li>
+        <li>21기 김수인맘</li>
+        <li>21기 한결맘</li>
+        <li>22기 강서연맘</li>
+        <li>22기 문시완빠</li>
+        <li>19기 이지오빠</li>
+        <li>19기 이선우맘</li>
+        <li>19기 이선우빠</li>
+        <li>20기 임연준맘</li>
+        <li>21기 김수인빠</li>
+      </ul>
+      <p>마음 내어주신 모든 분들께 감사의 마음을 전합니다!</p>
+    </div>
+
+    <div class="footer">
+      두근두근 방과후 소식지 | 조합가입문의: 02-504-7643
     </div>
   </div>
-
-  <div class="section">
-    <h2>학년별 주요 활동</h2>
-    <ul>
-      <li>1학년: 신나는 봄나들이 체험</li>
-      <li>2학년: 자연물 공예 활동</li>
-      <li>3학년: 과학탐구 실험교실</li>
-      <li>4학년: 역사문화탐방 프로젝트</li>
-      <li>5학년: 환경사랑 생태캠프</li>
-      <li>6학년: 리더십 캠프 & 졸업 준비 활동</li>
-    </ul>
-    <div class="grade-image-frame">
-      <img src="https://via.placeholder.com/800x400.png?text=학년별+활동사진" alt="학년별 활동">
-    </div>
-  </div>
-
-  <div class="section">
-    <h2>우리 선생님을 소개합니다</h2>
-    <p>이번 달에는 친절하고 따뜻한 우리 미술 선생님과의 인터뷰를 담았습니다. 어떤 이야기를 들려주셨을까요?</p>
-  </div>
-
-  <div class="section">
-    <h2>아이들의 작품 전시</h2>
-    <ul>
-      <li>반짝반짝 모빌 만들기</li>
-      <li>상상 가득 나만의 마을 꾸미기</li>
-      <li>봄꽃 수채화 전시회</li>
-    </ul>
-    <div class="gallery">
-      <img src="https://via.placeholder.com/300x200.png?text=작품1" alt="작품1">
-      <img src="https://via.placeholder.com/300x200.png?text=작품2" alt="작품2">
-      <img src="https://via.placeholder.com/300x200.png?text=작품3" alt="작품3">
-      <img src="https://via.placeholder.com/300x200.png?text=작품4" alt="작품4">
-    </div>
-  </div>
-
-  <div class="section">
-    <h2>다음 달 미리보기</h2>
-    <p>5월에는 어린이날 기념 특별활동과 가족초대 작품전이 예정되어 있어요. 기대해 주세요!</p>
-  </div>
-
-  <div class="section">
-    <h2>감사합니다</h2>
-    <p>아마 활동에 참여해 주신 분들:</p>
-    <ul>
-      <li>21기 오지음맘</li>
-      <li>21기 김수인맘</li>
-      <li>21기 한결맘</li>
-      <li>22기 강서연맘</li>
-      <li>22기 문시완빠</li>
-      <li>19기 이지오빠</li>
-      <li>19기 이선우맘</li>
-      <li>19기 이선우빠</li>
-      <li>20기 임연준맘</li>
-      <li>21기 김수인빠</li>
-    </ul>
-    <p>마음 내어주신 모든 분들께 감사의 마음을 전합니다!</p>
-  </div>
-
-  <div class="footer">
-    두근두근 방과후 소식지 | 조합가입문의: 02-504-7643
-  </div>
-</div>
 </body>
 </html>
+
