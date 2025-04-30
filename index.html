@@ -62,7 +62,7 @@
       margin-top: 20px;
       text-align: center;
     }
-    .image-frame img, .grade-image-frame img, .gallery img {
+    .image-frame img, .grade-image-frame img {
       width: 45%;
       margin: 10px;
       border-radius: 8px;
@@ -72,7 +72,19 @@
     .gallery {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 15px;
+      gap: 20px;
+    }
+    .gallery img {
+      width: 90%;
+      border: 8px ridge #f4a460;
+      border-radius: 20px;
+      padding: 10px;
+      background-color: #fffaf0;
+      box-shadow: 4px 4px 12px rgba(0,0,0,0.15);
+      transition: transform 0.3s;
+    }
+    .gallery img:hover {
+      transform: scale(1.05);
     }
     .footer {
       text-align: center;
