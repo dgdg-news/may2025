@@ -81,8 +81,54 @@
     margin-top: 60px;
   }
 </style>
+<script>
+  function insertContent() {
+    const input = document.getElementById("newContent").value;
+    const target = document.getElementById("dynamic-story");
+    if (input.trim()) {
+      const newPara = document.createElement("p");
+      newPara.innerText = input;
+      target.appendChild(newPara);
+      saveContent();
+      document.getElementById("newContent").value = "";
+    }
+  }
+
+  function saveContent() {
+    const content = document.getElementById("dynamic-story").innerHTML;
+    localStorage.setItem("savedStoryContent", content);
+  }
+
+  function loadContent() {
+    const saved = localStorage.getItem("savedStoryContent");
+    if (saved) {
+      document.getElementById("dynamic-story").innerHTML = saved;
+    }
+  }
+
+  function clearContent() {
+    localStorage.removeItem("savedStoryContent");
+    document.getElementById("dynamic-story").innerHTML = "";
+  }
+
+  function editContent() {
+    const current = document.getElementById("dynamic-story").innerText;
+    document.getElementById("newContent").value = current;
+  }
+
+  window.onload = loadContent;
+</script>
 </head>
 <body>
+<!-- ✏️ 신문 외부에 배치된 입력 폼 -->
+<div id="editor" style="width: 900px; margin: 40px auto; padding: 20px; background: #f0f0f0; border-radius: 10px;">
+  <h3>📝 기사 내용 입력 (신문 편집 전용)</h3>
+  <textarea id="newContent" rows="6" style="width: 100%; font-size: 1em;"></textarea><br>
+  <button onclick="insertContent()">👉 신문에 추가</button>
+  <button onclick="editContent()" style="margin-left: 10px;">✏️ 수정</button>
+  <button onclick="clearContent()" style="margin-left: 10px;">🗑️ 초기화</button>
+  <button onclick="clearContent()" style="margin-left: 10px;">🗑️ 초기화</button>
+</div>
 <div class="newspaper">
   <img src="두근두근로고(배경없음).png" alt="두근두근 로고" class="logo">
   <div class="header">
@@ -93,18 +139,22 @@
     <div style="border: 1px solid #ccc; padding: 8px; margin-top: 10px; font-size: 0.9em; display: flex; justify-content: center; gap: 30px;">
       <span>발행인 : 이사장 딱지</span>
       <span>편집인 : 운영위원회</span>
-      <span>2025년 5월 두근두근 첫번째 이야기</span>
     </div>
  
   <div class="section">
     <h2>지난 달 이야기</h2>
+    <div id="dynamic-story"></div>
     <h3 style="font-size: 1.5em; margin-top: 20px; color: #4169e1;">아마활동 후기</h3>
     <p>아마활동 생생후기를 전합니다.</p>
     <div class="image-frame">
       <img src="아마활동_0425.jpg" alt="아마활동 이미지">
     </div>
     <h3 style="font-size: 1.5em; margin-top: 20px; color: #4169e1;">신입조합원 교육 소식</h3>
-      <p>지난 주 금요일(4월 25일) 신입조합원 교육이 잘 마무리되었습니다. 교육위에서 직접 요리까지 해서 즐겁고 화기애애한 시간을 가졌습니다. 작은눈 대표교사의 두근의 교육설명회 1시간, 그리고 조합원 교육 + 선배조합원들과의 소소한 나누기 등으로 알찬 시간을 가졌습니다. (교육위의 하사께서 짜장 재료를 모두 지원해주셔서 비용이 많이 절감되었습니다 ^^) 마지막으로 교육마치고 진심어린 후기까지 보내주셔서 감사했습니다. - 교육소위</p>
+      <p>지난 주 금요일(4월 25일) 신입조합원 교육이 잘 마무리되었습니다. 교육위에서 직접 요리까지 해서 즐겁고 화기애애한 시간을 가졌습니다. 작은눈 대표교사의 두근의 교육설명회 1시간, 그리고 조합원 교육 + 선배조합원들과의 소소한 나누기 등으로 알찬 시간을 가졌습니다. (교육위의 하사가 짜장 재료를 모두 지원해주셔서 비용이 많이 절감되었습니다 ^^) - 교육소위</p>
+    </div>
+    <div class="image-frame">
+      <img src="아마활동_0425.jpg" alt="아마활동 이미지">
+    </div>
     <div class="image-frame">
       <img src="신입조합원교육_01_0425.jpg" alt="신입조합원 교육 이미지 1">
       <img src="신입조합원교육_02_0425.jpg" alt="신입조합원 교육 이미지 2">
@@ -177,7 +227,3 @@
 </div>
 </body>
 </html>
-
-
-
-
