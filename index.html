@@ -3,119 +3,104 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>2025년 5월호 두근두근 소식지</title>
+  <title>두근두근 방과후 소식지</title>
   <style>
     body {
-      font-family: 'Arial', sans-serif;
-      line-height: 1.7;
-      padding: 1rem;
-      max-width: 800px;
-      margin: auto;
-      font-size: 1.1rem;
-      background-color: #fffef8;
-      color: #222;
-    }
-    header {
-      text-align: center;
-      padding: 1rem 0;
-      border-bottom: 1px solid #ccc;
-    }
-    header h1 {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      background-color: #d8e8d8;
       margin: 0;
-      color: #2a4d69;
-      font-size: 1.8rem;
+      padding: 40px 0;
+      color: #333;
+      font-size: 18px;
     }
-    section {
-      margin-top: 2rem;
-    }
-    h2, h3 {
-      color: #003366;
-    }
-    img {
-      width: 100%;
-      max-width: 420px;
-      height: auto;
-      margin-top: 1rem;
-      border-radius: 8px;
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    .caption {
-      font-size: 0.95rem;
-      color: #666;
-      margin-top: 0.3rem;
-      text-align: center;
-    }
-    ul {
-      padding-left: 1.2rem;
-    }
-    li {
-      margin-bottom: 0.3rem;
+    .newspaper {
+      width: 90%;
+      max-width: 900px;
+      margin: auto;
+      background: #fffef5;
+      padding: 40px;
+      border: 8px double #333;
+      box-shadow: 0 0 20px rgba(0,0,0,0.2);
+      position: relative;
     }
     .logo {
-      max-width: 120px;
-      margin: auto;
-      display: block;
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      width: 100px;
+      height: auto;
     }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 1rem;
-      overflow-x: auto;
-      display: block;
-    }
-    th, td {
-      border: 1px solid #ccc;
-      padding: 0.5rem;
+    .header {
       text-align: center;
-      font-size: 0.95rem;
+      margin-bottom: 40px;
     }
-    th {
-      background-color: #f0f8ff;
+    .header h1 {
+      font-size: 2.5em;
+      margin: 0;
+      color: #222;
     }
-    .link-box {
-      margin-top: 3rem;
-      padding: 1.2rem;
-      background: #f5faff;
-      border-left: 6px solid #3399cc;
-      border-radius: 6px;
+    .header p {
+      font-size: 1.1em;
+      color: #777;
     }
-    .link-box a {
-      color: #0066cc;
-      text-decoration: none;
+    .section {
+      margin-bottom: 40px;
+    }
+    .section h2 {
+      font-size: 1.8em;
+      color: #333333;
+      background-color: #ffefd5;
+      padding: 12px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      text-align: center;
+      box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
       font-weight: bold;
     }
-
-    @media screen and (max-width: 480px) {
-      body {
-        font-size: 1rem;
-        padding: 0.5rem;
-      }
-      table, thead, tbody, th, td, tr {
-        display: block;
-        width: 100%;
-      }
-      th, td {
-        box-sizing: border-box;
-        width: 100%;
-        display: block;
-        text-align: left;
-      }
-      table {
-        border: none;
-      }
-      th {
-        background-color: transparent;
-        font-weight: bold;
-      }
-      td {
-        border: none;
-        border-bottom: 1px solid #eee;
-        margin-bottom: 0.5rem;
-      }
+    .section p, .section ul {
+      font-size: 1em;
+      line-height: 1.8;
+    }
+    .image-frame, .grade-image-frame, .gallery {
+      margin-top: 20px;
+      text-align: center;
+    }
+    .image-frame img, .grade-image-frame img, .gallery img {
+      width: 100%;
+      max-width: 420px;
+      margin: 10px;
+      border-radius: 8px;
+      border: 4px solid #ccc;
+      box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 15px;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.9em;
+      color: #555;
+      margin-top: 60px;
     }
   </style>
+  <script>
+    window.onload = function () {
+      const saved = localStorage.getItem("savedNewsletterContent");
+      if (saved) {
+        try {
+          const parsed = JSON.parse(saved);
+          const target = document.getElementById("dynamic-story");
+          if (target && parsed.text) {
+            target.innerHTML += `<p>${parsed.text}</p>`;
+          }
+        } catch (e) {
+          console.error("저장된 데이터를 파싱하는 중 오류 발생:", e);
+        }
+      }
+    };
+  </script>
 </head>
 <body>
   <div class="newspaper">
