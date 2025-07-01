@@ -2,116 +2,120 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <title>두근두근 방과후 소식지</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2025년 5월호 두근두근 소식지</title>
   <style>
     body {
-      font-family: 'Georgia', 'Times New Roman', serif;
-      background-color: #d8e8d8;
-      margin: 0;
-      padding: 40px 0;
-      color: #333;
-    }
-    .newspaper {
-      width: 900px;
+      font-family: 'Arial', sans-serif;
+      line-height: 1.7;
+      padding: 1rem;
+      max-width: 800px;
       margin: auto;
-      background: #fffef5;
-      padding: 40px;
-      border: 8px double #333;
-      box-shadow: 0 0 20px rgba(0,0,0,0.2);
-      position: relative;
-    }
-    .logo {
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      width: 100px;
-      height: auto;
-    }
-    .header {
-      text-align: center;
-      margin-bottom: 40px;
-    }
-    .header h1 {
-      font-size: 3em;
-      margin: 0;
+      font-size: 1.1rem;
+      background-color: #fffef8;
       color: #222;
     }
-    .header p {
-      font-size: 1.2em;
-      color: #777;
-    }
-    .section {
-      margin-bottom: 40px;
-    }
-    .section h2 {
-      font-size: 2em;
-      color: #333333;
-      background-color: #ffefd5;
-      padding: 12px;
-      border-radius: 12px;
-      margin-bottom: 20px;
+    header {
       text-align: center;
-      box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+      padding: 1rem 0;
+      border-bottom: 1px solid #ccc;
+    }
+    header h1 {
+      margin: 0;
+      color: #2a4d69;
+      font-size: 1.8rem;
+    }
+    section {
+      margin-top: 2rem;
+    }
+    h2, h3 {
+      color: #003366;
+    }
+    img {
+      width: 100%;
+      max-width: 420px;
+      height: auto;
+      margin-top: 1rem;
+      border-radius: 8px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .caption {
+      font-size: 0.95rem;
+      color: #666;
+      margin-top: 0.3rem;
+      text-align: center;
+    }
+    ul {
+      padding-left: 1.2rem;
+    }
+    li {
+      margin-bottom: 0.3rem;
+    }
+    .logo {
+      max-width: 120px;
+      margin: auto;
+      display: block;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+      overflow-x: auto;
+      display: block;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 0.5rem;
+      text-align: center;
+      font-size: 0.95rem;
+    }
+    th {
+      background-color: #f0f8ff;
+    }
+    .link-box {
+      margin-top: 3rem;
+      padding: 1.2rem;
+      background: #f5faff;
+      border-left: 6px solid #3399cc;
+      border-radius: 6px;
+    }
+    .link-box a {
+      color: #0066cc;
+      text-decoration: none;
       font-weight: bold;
     }
-    .section p, .section ul {
-      font-size: 1.1em;
-      line-height: 1.8;
-    }
-    .image-frame, .grade-image-frame, .gallery {
-      margin-top: 20px;
-      text-align: center;
-    }
-    .image-frame img, .grade-image-frame img {
-      width: 45%;
-      margin: 10px;
-      border-radius: 8px;
-      border: 4px solid #ccc;
-      box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
-    }
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
-    }
-    .gallery img {
-      width: 90%;
-      border: 8px ridge #f4a460;
-      border-radius: 20px;
-      padding: 10px;
-      background-color: #fffaf0;
-      box-shadow: 4px 4px 12px rgba(0,0,0,0.15);
-      transition: transform 0.3s;
-    }
-    .gallery img:hover {
-      transform: scale(1.05);
-    }
-    .footer {
-      text-align: center;
-      font-size: 0.9em;
-      color: #555;
-      margin-top: 60px;
+
+    @media screen and (max-width: 480px) {
+      body {
+        font-size: 1rem;
+        padding: 0.5rem;
+      }
+      table, thead, tbody, th, td, tr {
+        display: block;
+        width: 100%;
+      }
+      th, td {
+        box-sizing: border-box;
+        width: 100%;
+        display: block;
+        text-align: left;
+      }
+      table {
+        border: none;
+      }
+      th {
+        background-color: transparent;
+        font-weight: bold;
+      }
+      td {
+        border: none;
+        border-bottom: 1px solid #eee;
+        margin-bottom: 0.5rem;
+      }
     }
   </style>
-  <script>
-    window.onload = function () {
-      const saved = localStorage.getItem("savedNewsletterContent");
-      if (saved) {
-        try {
-          const parsed = JSON.parse(saved);
-          const target = document.getElementById("dynamic-story");
-          if (parsed.text) {
-            target.innerHTML = `<p>${parsed.text}</p>`;
-          }
-          if (parsed.image) {
-            target.innerHTML += `<img src="${parsed.image}" style="width:45%; margin:10px; border-radius:8px; border:4px solid #ccc; box-shadow:2px 2px 8px rgba(0,0,0,0.1);">`;
-          }
-        } catch (e) {
-          console.error("로딩 오류:", e);
-        }
-      }
-    };
-  </script>
 </head>
 <body>
   <div class="newspaper">
